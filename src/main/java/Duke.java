@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Duke {
     private static String line = "\t____________________________________________________________";
@@ -13,17 +14,22 @@ public class Duke {
 
         String input = null;
         Scanner scanner = new Scanner(System.in);
+        ArrayList<String> commandList = new ArrayList<>();
 
         printHelloMsg();
 
         while (scanner.hasNext()) {
             input = readInput(scanner);
 
-            if (!input.equals("bye")) {
-                echo(input);
+            if (input.equals("bye")) {
+                break;
+            }
+            else if (input.equals("list")) {
+                iterateList(commandList);
             }
             else {
-                break;
+                commandList.add(input);
+                echoCommand(input);
             }
         }
 
@@ -51,10 +57,17 @@ public class Duke {
         return commands;
     }
 
-    private static void echo(String input) {
+    private static void echoCommand(String input) {
         printLine();
-        System.out.println("\t" + input);
+        System.out.println("\tadded: " + input);
         printLine();
     }
 
+    private static void iterateList(ArrayList commandList) {
+        printLine();
+        for (int i = 0; i < commandList.size(); i++) {
+            System.out.println("\t" + (i + 1) + ". " + commandList.get(i));
+        }
+        printLine();
+    }
 }
