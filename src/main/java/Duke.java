@@ -14,7 +14,7 @@ public class Duke {
 
         String input = null;
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> commandList = new ArrayList<>();
+        ArrayList<Task> taskList = new ArrayList<>();
 
         printHelloMsg();
 
@@ -25,10 +25,14 @@ public class Duke {
                 break;
             }
             else if (input.equals("list")) {
-                iterateList(commandList);
+                iterateList(taskList);
+            }
+            else if (input.startsWith("done ")) {
+                markAsDone(input, taskList);
             }
             else {
-                commandList.add(input);
+                Task task = new Task(input);
+                taskList.add(task);
                 echoCommand(input);
             }
         }
@@ -42,13 +46,13 @@ public class Duke {
 
     private static void printHelloMsg() {
         printLine();
-        System.out.println("\tHello! I'm Duke\n" + "\tWhat can I do for you?");
+        System.out.println("\t Hello! I'm Duke\n" + "\t What can I do for you?");
         printLine();
     }
 
     private static void printByeMsg() {
         printLine();
-        System.out.println("\tBye. Hope to see you again soon!");
+        System.out.println("\t Bye. Hope to see you again soon!");
         printLine();
     }
 
@@ -59,15 +63,48 @@ public class Duke {
 
     private static void echoCommand(String input) {
         printLine();
-        System.out.println("\tadded: " + input);
+        System.out.println("\t added: " + input);
         printLine();
     }
 
-    private static void iterateList(ArrayList commandList) {
+    private static void iterateList(ArrayList taskList) {
         printLine();
-        for (int i = 0; i < commandList.size(); i++) {
-            System.out.println("\t" + (i + 1) + ". " + commandList.get(i));
+        if (taskList.isEmpty()) {
+            System.out.println("\t The list is currently empty, please add a new task!");
+        }
+        else {
+            System.out.println("\t Here are the tasks in your list:");
+            for (int i = 0; i < taskList.size(); i++) {
+                Task currentTask = (Task) taskList.get(i);
+                System.out.println("\t " + (i + 1) + ".[" + currentTask.getStatusIcon() + "] "
+                        + currentTask.getCommand());
+            }
         }
         printLine();
+    }
+
+    private static void markAsDone (String input, ArrayList taskList) {
+        //String[] words = input.split(" ");
+        //Integer taskNum = Integer.parseInt(words[1]);
+        try {
+            Integer taskNum = Integer.parseInt(input.substring(5));
+            Task currentTask = (Task) taskList.get(taskNum - 1);
+            currentTask.setDoneStatus(true);
+            printLine();
+            System.out.println("\t Nice! I've marked this task as done: ");
+            System.out.println("\t   [" + currentTask.getStatusIcon() + "] "
+                    + currentTask.getCommand());
+            printLine();
+        }
+        catch (IndexOutOfBoundsException e) {
+            printLine();
+            System.out.println("\t Invalid task number entered! Please try again.");
+            printLine();
+        }
+        catch (NumberFormatException e) {
+            printLine();
+            System.out.println("\t Invalid format entered! Please try again.");
+            printLine();
+        }
     }
 }
