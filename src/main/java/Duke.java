@@ -46,6 +46,11 @@ public class Duke {
                 markAsDone(input, taskList);
             }
 
+            else if (input.startsWith("print date")) {
+                Deadline deadline = (Deadline) taskList.get(5);
+                deadline.printDate();
+            }
+
             else {
                 try {
                     addTask(input, taskList);
