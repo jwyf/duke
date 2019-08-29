@@ -1,8 +1,9 @@
+import java.util.EmptyStackException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Duke {
-    private static String line = "\t____________________________________________________________";
+    private static String LINE = "\t____________________________________________________________";
 
     public static void main(String[] args) {
 //        String logo = " ____        _        \n"
@@ -30,6 +31,7 @@ public class Duke {
             else if (input.startsWith("done ")) {
                 markAsDone(input, taskList);
             }
+
             else {
                 Task task = new Task(input);
                 taskList.add(task);
@@ -41,7 +43,7 @@ public class Duke {
     }
 
     private static void printLine() {
-        System.out.println(line);
+        System.out.println(LINE);
     }
 
     private static void printHelloMsg() {
@@ -83,7 +85,7 @@ public class Duke {
         printLine();
     }
 
-    private static void markAsDone (String input, ArrayList taskList) {
+    private static void markAsDone(String input, ArrayList taskList) {
         //String[] words = input.split(" ");
         //Integer taskNum = Integer.parseInt(words[1]);
         try {
@@ -95,13 +97,11 @@ public class Duke {
             System.out.println("\t   [" + currentTask.getStatusIcon() + "] "
                     + currentTask.getCommand());
             printLine();
-        }
-        catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             printLine();
             System.out.println("\t Invalid task number entered! Please try again.");
             printLine();
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             printLine();
             System.out.println("\t Invalid format entered! Please try again.");
             printLine();
