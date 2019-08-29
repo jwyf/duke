@@ -34,7 +34,42 @@ public class Duke {
             }
 
             else {
-                addTask(input, taskList);
+                try {
+                    addTask(input, taskList);
+                } catch (DukeException e) {
+                    switch (e.getErrorType()) {
+                        case EMPTY_TODO: {
+                            printLine();
+                            System.out.println("\t ☹ OOPS!!! The description of a todo cannot be empty.");
+                            printLine();
+                            break;
+                        }
+                        case EMPTY_DEADLINE: {
+                            printLine();
+                            System.out.println("\t ☹ OOPS!!! The description of a deadline cannot be empty.");
+                            printLine();
+                            break;
+                        }
+                        case EMPTY_EVENT: {
+                            printLine();
+                            System.out.println("\t ☹ OOPS!!! The description of an event cannot be empty.");
+                            printLine();
+                            break;
+                        }
+                        case UNKNOWN_COMMAND: {
+                            printLine();
+                            System.out.println("\t ☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
+                            printLine();
+                            break;
+                        }
+                        case UNKNOWN_ERROR: {
+                            printLine();
+                            System.out.println("\t ☹ OOPS!!! I'm sorry, we encountered an unknown error!");
+                            printLine();
+                            break;
+                        }
+                    }
+                }
             }
         }
 
@@ -106,32 +141,47 @@ public class Duke {
         }
     }
 
-    private static void addTask(String input, ArrayList taskList) {
+    private static void addTask (String input, ArrayList taskList) throws DukeException {
         String[] words = input.split(" ");
         String taskType = words[0];
         switch (taskType) {
             case "todo": {
-                ToDo todo = new ToDo(input.substring(5));
-                taskList.add(todo);
-                echoCommand(todo, taskList);
-                break;
+                if (input.substring(4).isBlank()) {
+                    throw new DukeException(ErrorType.EMPTY_TODO);
+                } else {
+                    ToDo todo = new ToDo(input.substring(5));
+                    taskList.add(todo);
+                    echoCommand(todo, taskList);
+                    break;
+                }
+
             } case "deadline": {
+                Deadline deadline;
+                if (input.substring(8).isBlank()) {
+                    throw new DukeException(ErrorType.EMPTY_DEADLINE);
+                }
                 String[] deadlineArray = input.substring(9).split(" /by ");
-                Deadline deadline = new Deadline(deadlineArray[0], deadlineArray[1]);
+                deadline = new Deadline(deadlineArray[0], deadlineArray[1]);
                 taskList.add(deadline);
                 echoCommand(deadline, taskList);
                 break;
+
             } case "event": {
+                Event event;
+                if (input.substring(5).isBlank()) {
+                    throw new DukeException(ErrorType.EMPTY_EVENT);
+                }
                 String[] eventArray = input.substring(6).split(" /at ");
-                Event event = new Event(eventArray[0], eventArray[1]);
+                event = new Event(eventArray[0], eventArray[1]);
                 taskList.add(event);
                 echoCommand(event, taskList);
                 break;
             }
             default: {
-                Task task = new Task(input);
-                taskList.add(task);
-                echoCommand(task, taskList);
+                throw new DukeException(ErrorType.UNKNOWN_COMMAND);
+//                Task task = new Task(input);
+//                taskList.add(task);
+//                echoCommand(task, taskList);
             }
         }
     }
