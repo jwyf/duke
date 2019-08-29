@@ -19,8 +19,8 @@ public class Deadline extends Task {
         String time = byArray[1];
         if (DateValidation.validateJavaDate(date) == true) {
             String[] dateArray = date.split("/");
-            this.date = new Date(Integer.parseInt(dateArray[2]) - 1901,
-                    Integer.parseInt(dateArray[1]),
+            this.date = new Date(Integer.parseInt(dateArray[2]) - 1900,
+                    Integer.parseInt(dateArray[1]) - 1,
                     Integer.parseInt(dateArray[0]),
                     Integer.parseInt(time.substring(0, 2)),
                     Integer.parseInt(time.substring(3, 4)));
