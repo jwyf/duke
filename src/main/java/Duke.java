@@ -46,10 +46,10 @@ public class Duke {
                 markAsDone(input, taskList);
             }
 
-            else if (input.startsWith("print date")) {
-                Deadline deadline = (Deadline) taskList.get(5);
-                deadline.printDate();
-            }
+//            else if (input.startsWith("print date")) {
+//                Deadline deadline = (Deadline) taskList.get(5);
+//                deadline.printDate();
+//            }
 
             else {
                 try {
@@ -178,10 +178,10 @@ public class Duke {
 
             } case "deadline": {
                 Deadline deadline;
-                if (input.substring(8).isBlank()) {
+                String[] deadlineArray = input.substring(9).split(" /by ");
+                if (input.substring(8).isBlank() || deadlineArray[1].isBlank()) {
                     throw new DukeException(ErrorType.EMPTY_DEADLINE);
                 }
-                String[] deadlineArray = input.substring(9).split(" /by ");
                 deadline = new Deadline(deadlineArray[0], deadlineArray[1]);
                 taskList.add(deadline);
                 echoCommand(deadline, taskList);
@@ -189,10 +189,10 @@ public class Duke {
 
             } case "event": {
                 Event event;
-                if (input.substring(5).isBlank()) {
+                String[] eventArray = input.substring(6).split(" /at ");
+                if (input.substring(5).isBlank() || eventArray[1].isBlank()) {
                     throw new DukeException(ErrorType.EMPTY_EVENT);
                 }
-                String[] eventArray = input.substring(6).split(" /at ");
                 event = new Event(eventArray[0], eventArray[1]);
                 taskList.add(event);
                 echoCommand(event, taskList);
