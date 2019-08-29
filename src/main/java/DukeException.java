@@ -1,5 +1,7 @@
 public class DukeException extends Exception {
-    //Exceptions specific to Duke
+    /**
+     * Exceptions specific to Duke
+     */
     protected ErrorType errorType;
 
     DukeException(ErrorType errorType) {

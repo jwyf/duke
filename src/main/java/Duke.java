@@ -1,9 +1,15 @@
-import java.lang.reflect.Array;
-import java.util.EmptyStackException;
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 
 public class Duke {
+    /**
+     * A Personal Assistant Chatbot that helps a person to keep track of various things.
+     */
     private static String LINE = "\t____________________________________________________________";
 
     public static void main(String[] args) {
@@ -13,10 +19,17 @@ public class Duke {
 //                + "| |_| | |_| |   <  __/\n"
 //                + "|____/ \\__,_|_|\\_\\___|\n";
 //        System.out.println("Hello from\n" + logo);
-
         String input = null;
         Scanner scanner = new Scanner(System.in);
         ArrayList<Task> taskList = new ArrayList<>();
+
+        try {
+            populateList(taskList);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found exception");
+        } catch (DukeException e) {
+            System.out.println(e.getErrorType());
+        }
 
         printHelloMsg();
 
@@ -69,6 +82,9 @@ public class Duke {
                             break;
                         }
                     }
+                } catch (IOException e) {
+                    System.out.println("There is an IOException error: " + e.getMessage()
+                            + " when writing to file");
                 }
             }
         }
@@ -141,7 +157,7 @@ public class Duke {
         }
     }
 
-    private static void addTask (String input, ArrayList taskList) throws DukeException {
+    private static void addTask (String input, ArrayList taskList) throws DukeException, IOException {
         String[] words = input.split(" ");
         String taskType = words[0];
         switch (taskType) {
@@ -184,5 +200,75 @@ public class Duke {
 //                echoCommand(task, taskList);
             }
         }
+        saveList(taskList);
+    }
+
+    private static void saveList(ArrayList taskList) throws IOException {
+        String formattedList = new String();
+        for (int i = 0; i < taskList.size(); i++) {
+            Task currentTask = (Task) taskList.get(i);
+            String taskType = currentTask.getTaskType();
+            if (taskType.equals("D") || taskType.equals("E")) {
+                formattedList = formattedList + currentTask.getTaskType() + " | "
+                        + (currentTask.getDoneStatus() ? 1 : 0) + " | "
+                        + currentTask.getCommand() + " | "
+                        + currentTask.getDate()
+                        + System.lineSeparator();
+            }
+            else {
+                formattedList = formattedList + currentTask.getTaskType() + " | "
+                        + (currentTask.getDoneStatus() ? 1 : 0) + " | "
+                        + currentTask.getCommand()
+                        + System.lineSeparator();
+            }
+        }
+        FileWriting.writeToFile("C:/Users/josep/duke/data/duke.txt", formattedList);
+    }
+
+    private static void populateList (ArrayList taskList) throws FileNotFoundException, DukeException {
+        File file = new File("C:/Users/josep/duke/data/duke.txt");
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNext()) {
+            String currentInput = scanner.nextLine();
+            if (currentInput.startsWith("T")) {
+//                String noSpace = currentInput.replaceAll("\\s+","");
+//                String processedInput = noSpace.replaceAll("|"," ");
+                String[] todoArray = currentInput.split(" \\| ");
+                ToDo toDo = new ToDo(todoArray[2]);
+                if (todoArray[1].equals("1")) {
+                    toDo.setDoneStatus(true);
+                }
+                else {
+                    toDo.setDoneStatus(false);
+                }
+                taskList.add(toDo);
+            }
+            else if (currentInput.startsWith("D")) {
+                String[] deadlineArray = currentInput.split(" \\| ", 4);
+                Deadline deadline = new Deadline(deadlineArray[2], deadlineArray[3]);
+                if (deadlineArray[1].equals("1")) {
+                    deadline.setDoneStatus(true);
+                }
+                else {
+                    deadline.setDoneStatus(false);
+                }
+                taskList.add(deadline);
+            }
+            else if (currentInput.startsWith("E")) {
+                String[] eventArray = currentInput.split(" \\| ", 4);
+                Event event = new Event(eventArray[2], eventArray[3]);
+                if (eventArray[1].equals("1")) {
+                    event.setDoneStatus(true);
+                }
+                else {
+                    event.setDoneStatus(false);
+                }
+                taskList.add(event);
+            }
+            else {
+                throw new DukeException(ErrorType.SAVE_CORRUPTED);
+            }
+        }
+
     }
 }

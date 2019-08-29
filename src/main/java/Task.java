@@ -1,6 +1,8 @@
 public class Task {
     protected String command;
     protected Boolean isDone;
+    protected String taskType;
+    protected String date;
 
     public Task(String command) {
         this.command = command;
@@ -26,6 +28,16 @@ public class Task {
     public void setDoneStatus(Boolean done) {
         isDone = done;
     }
+
+    public String getTaskType() {
+        return taskType;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+//    public String
 
     @Override
     public String toString() {
