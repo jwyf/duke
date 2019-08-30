@@ -16,7 +16,6 @@ public class Task {
     public String getCommand() {
         return command;
     }
-
     public void setCommand(String command) {
         this.command = command;
     }
@@ -24,7 +23,6 @@ public class Task {
     public Boolean getDoneStatus() {
         return isDone;
     }
-
     public void setDoneStatus(Boolean done) {
         isDone = done;
     }
@@ -37,10 +35,9 @@ public class Task {
         return date;
     }
 
-//    public String
-
     @Override
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.getCommand();
     }
+
 }
