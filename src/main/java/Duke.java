@@ -61,10 +61,12 @@ public class Duke {
                 break;
             } else if (input.equals("list")) {
                 iterateList(taskList);
-            } else if (input.startsWith("done ")) {
+            } else if (input.startsWith("done")) {
                 tryMarkDone(input, taskList);
             } else if (input.startsWith("delete")) {
                 tryDeleteTask(input, taskList);
+            } else if (input.startsWith("find")) {
+                tryFindTask(input, taskList);
             } else {
                 tryAddTask(input, taskList);
             }
@@ -244,7 +246,7 @@ public class Duke {
         FileWriting.writeToFile("C:/Users/josep/duke/data/duke.txt", formattedList);
     }
 
-    private static void populateList (ArrayList taskList) throws FileNotFoundException, DukeException {
+    private static void populateList(ArrayList taskList) throws FileNotFoundException, DukeException {
         File file = new File("C:/Users/josep/duke/data/duke.txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {
@@ -295,6 +297,34 @@ public class Duke {
         } catch (DukeException e) {
             System.out.println(e.getErrorType()); //only file-corrupted error
             System.out.println("Your saved list is corrupted, there are unreadable entries");
+        }
+    }
+
+    private static void findTask(String input, ArrayList<Task> taskList) throws DukeException {
+        String keyWord = input.substring(5);
+        if (input.substring(4).isBlank()) {
+            throw new DukeException(ErrorType.EMPTY_FIND);
+        }
+        ArrayList<Task> findList = new ArrayList<>();
+        for (Task t : taskList) {
+            String command = t.getCommand();
+            if (command.contains(keyWord)) {
+                findList.add(t);
+            }
+        }
+        printLine();
+        System.out.println(TAB + " Here are the matching tasks in your list:");
+        for (int i = 0; i < findList.size(); i++) {
+            Task currentTask = (Task) findList.get(i);
+            System.out.println(TAB + " " + (i + 1) + ". " + currentTask.toString());
+        }
+        printLine();
+    }
+    private static void tryFindTask(String input, ArrayList taskList) {
+        try {
+            findTask(input, taskList);
+        } catch (DukeException e) {
+            System.out.println(TAB + " ☹ OOPS!!! The find field cannot be empty."); //only EMPTY_FIND error
         }
     }
 }
