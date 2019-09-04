@@ -63,6 +63,8 @@ public class Duke {
                 iterateList(taskList);
             } else if (input.startsWith("done ")) {
                 tryMarkDone(input, taskList);
+            } else if (input.startsWith("delete")) {
+                tryDeleteTask(input, taskList);
             } else {
                 tryAddTask(input, taskList);
             }
@@ -193,6 +195,27 @@ public class Duke {
                 break;
             }
             }
+        } catch (IOException e) {
+            System.out.println("There is an IOException error: " + e.getMessage()
+                    + " when writing to file");
+        }
+    }
+
+    private static void deleteTask (String input, ArrayList taskList) throws IOException {
+        Integer taskNum = Integer.parseInt(input.substring(7));
+        Task currentTask = (Task) taskList.get(taskNum - 1);
+        taskList.remove(taskNum - 1);
+        saveList(taskList);
+        printWithLine(TAB + " Noted. I've removed this task: ", TAB + "   " + currentTask.toString(),
+                TAB + " Now you have " + taskList.size() + " tasks in the list.");
+    }
+    private static void tryDeleteTask(String input, ArrayList taskList) {
+        try {
+            deleteTask(input, taskList);
+        } catch (IndexOutOfBoundsException e) {
+            printWithLine(TAB + " Invalid task number entered! Please try again.");
+        } catch (NumberFormatException e) {
+            printWithLine(TAB + " Invalid format entered! Please try again.");
         } catch (IOException e) {
             System.out.println("There is an IOException error: " + e.getMessage()
                     + " when writing to file");
