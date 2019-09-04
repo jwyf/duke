@@ -203,7 +203,10 @@ public class Duke {
         }
     }
 
-    private static void deleteTask (String input, ArrayList taskList) throws IOException {
+    private static void deleteTask (String input, ArrayList taskList) throws IOException, DukeException {
+        if (input.substring(6).isBlank()) {
+            throw new DukeException(ErrorType.EMPTY_DELETE);
+        }
         Integer taskNum = Integer.parseInt(input.substring(7));
         Task currentTask = (Task) taskList.get(taskNum - 1);
         taskList.remove(taskNum - 1);
@@ -216,6 +219,8 @@ public class Duke {
             deleteTask(input, taskList);
         } catch (IndexOutOfBoundsException e) {
             printWithLine(TAB + " Invalid task number entered! Please try again.");
+        } catch (DukeException e) {
+            System.out.println(TAB + " ☹ OOPS!!! The delete field cannot be empty."); //only EMPTY_DELETE error
         } catch (NumberFormatException e) {
             printWithLine(TAB + " Invalid format entered! Please try again.");
         } catch (IOException e) {
@@ -301,10 +306,10 @@ public class Duke {
     }
 
     private static void findTask(String input, ArrayList<Task> taskList) throws DukeException {
-        String keyWord = input.substring(5);
         if (input.substring(4).isBlank()) {
             throw new DukeException(ErrorType.EMPTY_FIND);
         }
+        String keyWord = input.substring(5);
         ArrayList<Task> findList = new ArrayList<>();
         for (Task t : taskList) {
             String command = t.getCommand();
