@@ -11,6 +11,7 @@ public class Duke {
      */
     private static String TAB = "    ";
     private static String LINE = TAB + "____________________________________________________________";
+    private static String filePath = "C:/Users/josep/duke/data/duke.txt";
 
     public static void main(String[] args) {
 //        String logo = " ____        _        \n"
@@ -227,6 +228,34 @@ public class Duke {
         }
     }
 
+    private static void findTask(String input, TaskList taskList) throws DukeException {
+        if (input.substring(4).isBlank()) {
+            throw new DukeException(ErrorType.EMPTY_FIND);
+        }
+        String keyWord = input.substring(5);
+        ArrayList<Task> findList = new ArrayList<>();
+        for (Task t : taskList.getTaskList()) {
+            String command = t.getCommand();
+            if (command.contains(keyWord)) {
+                findList.add(t);
+            }
+        }
+        printLine();
+        System.out.println(TAB + " Here are the matching tasks in your list:");
+        for (int i = 0; i < findList.size(); i++) {
+            Task currentTask = (Task) findList.get(i);
+            System.out.println(TAB + " " + (i + 1) + ". " + currentTask.toString());
+        }
+        printLine();
+    }
+    private static void tryFindTask(String input, TaskList taskList) {
+        try {
+            findTask(input, taskList);
+        } catch (DukeException e) {
+            System.out.println(TAB + " ☹ OOPS!!! The find field cannot be empty."); //only EMPTY_FIND error
+        }
+    }
+
     private static void saveList(TaskList taskList) throws IOException {
         String formattedList = new String();
         for (int i = 0; i < taskList.size(); i++) {
@@ -300,34 +329,6 @@ public class Duke {
         } catch (DukeException e) {
             System.out.println(e.getErrorType()); //only file-corrupted error
             System.out.println("Your saved list is corrupted, there are unreadable entries");
-        }
-    }
-
-    private static void findTask(String input, TaskList taskList) throws DukeException {
-        if (input.substring(4).isBlank()) {
-            throw new DukeException(ErrorType.EMPTY_FIND);
-        }
-        String keyWord = input.substring(5);
-        ArrayList<Task> findList = new ArrayList<>();
-        for (Task t : taskList.getTaskList()) {
-            String command = t.getCommand();
-            if (command.contains(keyWord)) {
-                findList.add(t);
-            }
-        }
-        printLine();
-        System.out.println(TAB + " Here are the matching tasks in your list:");
-        for (int i = 0; i < findList.size(); i++) {
-            Task currentTask = (Task) findList.get(i);
-            System.out.println(TAB + " " + (i + 1) + ". " + currentTask.toString());
-        }
-        printLine();
-    }
-    private static void tryFindTask(String input, TaskList taskList) {
-        try {
-            findTask(input, taskList);
-        } catch (DukeException e) {
-            System.out.println(TAB + " ☹ OOPS!!! The find field cannot be empty."); //only EMPTY_FIND error
         }
     }
 }
