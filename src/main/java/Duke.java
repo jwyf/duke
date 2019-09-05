@@ -1,9 +1,7 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.IOException;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -23,7 +21,7 @@ public class Duke {
 //        System.out.println("Hello from\n" + logo);
 
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Task> taskList = new ArrayList<>();
+        TaskList taskList = new TaskList();
 
         tryPopulateList(taskList); //try to load list from saved txt file
         printHelloMsg();
@@ -49,7 +47,7 @@ public class Duke {
         printWithLine(TAB + " Bye. Hope to see you again soon!");
     }
 
-    private static void carryOutCommand(Scanner scanner, ArrayList taskList) {
+    private static void carryOutCommand(Scanner scanner, TaskList taskList) {
         String input = "";
         while (scanner.hasNext()) {
             input = readInput(scanner);
@@ -82,12 +80,12 @@ public class Duke {
         return commands;
     }
 
-    private static void echoCommand(Task task, ArrayList taskList) {
+    private static void echoCommand(Task task, TaskList taskList) {
         printWithLine(TAB + " Got it. I've added this task: ", TAB + "   " + task.toString(),
                 TAB + " Now you have " + taskList.size() + " tasks in the list.");
     }
 
-    private static void iterateList(ArrayList taskList) {
+    private static void iterateList(TaskList taskList) {
         printLine();
         if (taskList.isEmpty()) {
             System.out.println(TAB + " The list is currently empty, please add a new task!");
@@ -102,14 +100,14 @@ public class Duke {
         printLine();
     }
 
-    private static void markDone(String input, ArrayList taskList) {
+    private static void markDone(String input, TaskList taskList) {
         Integer taskNum = Integer.parseInt(input.substring(5));
         Task currentTask = (Task) taskList.get(taskNum - 1);
         currentTask.setDoneStatus(true);
         printWithLine(TAB + " Nice! I've marked this task as done: ", TAB + "   ["
                 + currentTask.getStatusIcon() + "] " + currentTask.getCommand());
     }
-    private static void tryMarkDone(String input, ArrayList taskList) {
+    private static void tryMarkDone(String input, TaskList taskList) {
         try {
             markDone(input, taskList);
         } catch (IndexOutOfBoundsException e) {
@@ -119,7 +117,7 @@ public class Duke {
         }
     }
 
-    private static void addTask (String input, ArrayList taskList) throws DukeException, IOException {
+    private static void addTask (String input, TaskList taskList) throws DukeException, IOException {
         String[] words = input.split(" ");
         String taskType = words[0];
         switch (taskType) {
@@ -161,7 +159,7 @@ public class Duke {
         }
         saveList(taskList);
     }
-    private static void tryAddTask (String input, ArrayList taskList) {
+    private static void tryAddTask (String input, TaskList taskList) {
         try {
             addTask(input, taskList);
         } catch (DukeException e) {
@@ -203,7 +201,7 @@ public class Duke {
         }
     }
 
-    private static void deleteTask (String input, ArrayList taskList) throws IOException, DukeException {
+    private static void deleteTask (String input, TaskList taskList) throws IOException, DukeException {
         if (input.substring(6).isBlank()) {
             throw new DukeException(ErrorType.EMPTY_DELETE);
         }
@@ -214,7 +212,7 @@ public class Duke {
         printWithLine(TAB + " Noted. I've removed this task: ", TAB + "   " + currentTask.toString(),
                 TAB + " Now you have " + taskList.size() + " tasks in the list.");
     }
-    private static void tryDeleteTask(String input, ArrayList taskList) {
+    private static void tryDeleteTask(String input, TaskList taskList) {
         try {
             deleteTask(input, taskList);
         } catch (IndexOutOfBoundsException e) {
@@ -229,7 +227,7 @@ public class Duke {
         }
     }
 
-    private static void saveList(ArrayList taskList) throws IOException {
+    private static void saveList(TaskList taskList) throws IOException {
         String formattedList = new String();
         for (int i = 0; i < taskList.size(); i++) {
             Task currentTask = (Task) taskList.get(i);
@@ -251,7 +249,7 @@ public class Duke {
         FileWriting.writeToFile("C:/Users/josep/duke/data/duke.txt", formattedList);
     }
 
-    private static void populateList(ArrayList taskList) throws FileNotFoundException, DukeException {
+    private static void populateList(TaskList taskList) throws FileNotFoundException, DukeException {
         File file = new File("C:/Users/josep/duke/data/duke.txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {
@@ -294,7 +292,7 @@ public class Duke {
             }
         }
     }
-    private static void tryPopulateList(ArrayList taskList) {
+    private static void tryPopulateList(TaskList taskList) {
         try {
             populateList(taskList);
         } catch (FileNotFoundException e) {
@@ -305,13 +303,13 @@ public class Duke {
         }
     }
 
-    private static void findTask(String input, ArrayList<Task> taskList) throws DukeException {
+    private static void findTask(String input, TaskList taskList) throws DukeException {
         if (input.substring(4).isBlank()) {
             throw new DukeException(ErrorType.EMPTY_FIND);
         }
         String keyWord = input.substring(5);
         ArrayList<Task> findList = new ArrayList<>();
-        for (Task t : taskList) {
+        for (Task t : taskList.getTaskList()) {
             String command = t.getCommand();
             if (command.contains(keyWord)) {
                 findList.add(t);
@@ -325,7 +323,7 @@ public class Duke {
         }
         printLine();
     }
-    private static void tryFindTask(String input, ArrayList taskList) {
+    private static void tryFindTask(String input, TaskList taskList) {
         try {
             findTask(input, taskList);
         } catch (DukeException e) {
