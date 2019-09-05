@@ -10,9 +10,10 @@ public class Storage {
 
     public Storage(String filePath) {
         this.filePath = filePath;
+        taskList = new TaskList();
     }
 
-    public TaskList load() throws DukeException, FileNotFoundException, DukeException {
+    public TaskList load() throws FileNotFoundException, DukeException {
         File file = new File(filePath);
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {
@@ -57,7 +58,8 @@ public class Storage {
         return taskList;
     }
 
-    public void save() throws IOException {
+    public void save(TaskList modifiedList) throws IOException {
+        taskList = modifiedList;
         String formattedList = new String();
         for (int i = 0; i < taskList.size(); i++) {
             Task currentTask = (Task) taskList.get(i);
@@ -78,5 +80,4 @@ public class Storage {
         }
         FileWriting.writeToFile(filePath, formattedList);
     }
-
 }

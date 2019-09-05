@@ -14,17 +14,21 @@ public class Deadline extends Task {
     }
 
     public void checkDate() {
-        String[] byArray = by.split(" ");
-        String date = byArray[0];
-        String time = byArray[1];
-        if (DateValidation.validateJavaDate(by) == true) {
-            String[] dateArray = date.split("/");
-            Integer year = Integer.parseInt(dateArray[2]) - 1900;
-            Integer month = Integer.parseInt(dateArray[1]) - 1;
-            Integer day = Integer.parseInt(dateArray[0]);
-            Integer hours = Integer.parseInt(time.substring(0, 2));
-            Integer minutes = Integer.parseInt(time.substring(3, 4));
-            this.date = new Date(year, month, day, hours, minutes);
+        try {
+            String[] byArray = by.split(" ");
+            String date = byArray[0];
+            String time = byArray[1];
+            if (DateValidation.validateJavaDate(by) == true) {
+                String[] dateArray = date.split("/");
+                Integer year = Integer.parseInt(dateArray[2]) - 1900;
+                Integer month = Integer.parseInt(dateArray[1]) - 1;
+                Integer day = Integer.parseInt(dateArray[0]);
+                Integer hours = Integer.parseInt(time.substring(0, 2));
+                Integer minutes = Integer.parseInt(time.substring(3, 4));
+                this.date = new Date(year, month, day, hours, minutes);
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("     This date cannot be converted.");
         }
     }
 

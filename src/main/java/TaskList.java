@@ -1,14 +1,13 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class TaskList {
     protected ArrayList<Task> taskList;
 
     public TaskList() {
-        this.taskList = new ArrayList<>();
+        taskList = new ArrayList<>();
     }
-    public TaskList(ArrayList<Task> storageList) {
-        Collections.copy(taskList, storageList);
+    public TaskList(TaskList storageList) {
+        taskList = storageList.getTaskList();
     }
 
     public ArrayList<Task> getTaskList() {
@@ -16,7 +15,7 @@ public class TaskList {
     }
 
     public void setTaskList(ArrayList<Task> taskList) {
-        this.taskList = taskList;
+        taskList = taskList;
     }
 
     public void add(Task task) {
@@ -35,7 +34,7 @@ public class TaskList {
         return taskList.size();
     }
 
-    public Boolean isEmpty() {
+    public boolean isEmpty() {
         return taskList.isEmpty();
     }
 

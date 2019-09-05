@@ -1,6 +1,6 @@
 public class Task {
     protected String command;
-    protected Boolean isDone;
+    protected boolean isDone;
     protected String taskType;
     protected String date;
 
@@ -20,10 +20,10 @@ public class Task {
         this.command = command;
     }
 
-    public Boolean getDoneStatus() {
+    public boolean getDoneStatus() {
         return isDone;
     }
-    public void setDoneStatus(Boolean done) {
+    public void setDoneStatus(boolean done) {
         isDone = done;
     }
 
