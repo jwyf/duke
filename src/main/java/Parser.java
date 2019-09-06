@@ -1,3 +1,5 @@
+import Task.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,6 +8,7 @@ public class Parser {
 
     protected Ui ui;
     protected Storage storage;
+    protected Scanner scanner;
 
 //    public static /*Command*/ String parse(String fullCommand) {
 //        return fullCommand;
@@ -14,9 +17,10 @@ public class Parser {
     public Parser(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
+        this.scanner = new Scanner(System.in);
     }
 
-    public void carryOutCommand(Scanner scanner, TaskList taskList) throws DukeException {
+    public void carryOutCommand(TaskList taskList) throws DukeException {
         String input = "";
         while (scanner.hasNext()) {
             input = readInput(scanner);
@@ -38,7 +42,7 @@ public class Parser {
                 tryAddTask(input, taskList);
             }
 //            else if (input.startsWith("print date")) {
-//                Deadline deadline = (Deadline) taskList.get(5);
+//                Task.Deadline deadline = (Task.Deadline) taskList.get(5);
 //                deadline.printDate();
 //            }
         }

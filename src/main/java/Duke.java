@@ -1,7 +1,6 @@
+import Task.TaskList;
+
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class Duke {
@@ -35,14 +34,14 @@ public class Duke {
     }
 
     public void run() {
-        Scanner scanner = new Scanner(System.in);
-
         ui.printHelloMsg();
+
         try {
-            parser.carryOutCommand(scanner, taskList);
+            parser.carryOutCommand(taskList);
         } catch (DukeException e) {
             ui.showDukeError(e);
         }
+
         ui.printByeMsg();
     }
 

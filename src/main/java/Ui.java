@@ -1,4 +1,5 @@
-import java.lang.reflect.Array;
+import Task.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
