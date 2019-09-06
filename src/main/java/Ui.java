@@ -78,10 +78,10 @@ public class Ui {
 
     }
 
-    public void printLine() {
+    private void printLine() {
         System.out.println(LINE);
     }
-    public void printWithLine(String ...content) {
+    private void printWithLine(String ...content) {
         printLine();
         for (String s : content) {
             System.out.println(s);
