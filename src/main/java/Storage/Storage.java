@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Storage {
-    String filePath;
-    TaskList taskList;
+    private String filePath;
+    private TaskList taskList;
 
     public Storage(String filePath) {
         this.filePath = filePath;
@@ -64,9 +64,9 @@ public class Storage {
 
     public void save(TaskList modifiedList) throws IOException {
         taskList = modifiedList;
-        String formattedList = new String();
+        String formattedList = "";
         for (int i = 0; i < taskList.size(); i++) {
-            Task currentTask = (Task) taskList.get(i);
+            Task currentTask = taskList.get(i);
             String taskType = currentTask.getTaskType();
             if (taskType.equals("D") || taskType.equals("E")) {
                 formattedList = formattedList + currentTask.getTaskType() + " | "

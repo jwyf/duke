@@ -19,7 +19,7 @@ public class DeleteCommand extends Command {
         if (input.substring(6).isBlank()) {
             throw new DukeException(ExceptionType.EMPTY_DELETE);
         }
-        Integer taskNum = Integer.parseInt(input.substring(7));
+        int taskNum = Integer.parseInt(input.substring(7));
         Task currentTask = taskList.get(taskNum - 1);
         taskList.remove(currentTask);
         storage.save(taskList);

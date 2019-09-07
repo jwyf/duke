@@ -15,7 +15,7 @@ public class DoneCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws IndexOutOfBoundsException, NumberFormatException, IOException {
-        Integer taskNum = Integer.parseInt(input.substring(5));
+        int taskNum = Integer.parseInt(input.substring(5));
         Task currentTask = taskList.get(taskNum - 1);
         currentTask.setDoneStatus(true);
         ui.printDoneMsg(currentTask);

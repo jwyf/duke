@@ -1,16 +1,12 @@
 package Parser;
 
 import Command.*;
-import Task.*;
 import Exception.*;
-
-import java.io.IOException;
-
 
 public class Parser {
 
     public static Command parse(String input) throws DukeException,
-            IOException, IndexOutOfBoundsException, NumberFormatException {
+            IndexOutOfBoundsException, NumberFormatException {
         if (input.isBlank()) {
             throw new DukeException(ExceptionType.EMPTY_FIELD);
         }
