@@ -85,8 +85,8 @@ public class Parser {
                 ToDo todo = new ToDo(input.substring(5));
                 taskList.add(todo);
                 ui.printAddMsg(todo, taskList);
-                break;
             }
+            break;
 
         } case "deadline": {
             Deadline deadline;
@@ -137,7 +137,7 @@ public class Parser {
             throw new DukeException(ExceptionType.EMPTY_DELETE);
         }
         Integer taskNum = Integer.parseInt(input.substring(7));
-        Task currentTask = (Task) taskList.get(taskNum - 1);
+        Task currentTask = taskList.get(taskNum - 1);
         taskList.remove(currentTask);
         storage.save(taskList);
         ui.printDeleteMsg(currentTask, taskList);

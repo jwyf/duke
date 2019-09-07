@@ -5,6 +5,8 @@ import Task.TaskList;
 import Exception.DukeException;
 import Ui.Ui;
 
+import java.io.IOException;
+
 
 public abstract class Command {
     protected String input;
@@ -19,5 +21,5 @@ public abstract class Command {
         return this.isExit;
     }
 
-    public abstract void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException;
+    public abstract void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException, IOException;
 }
