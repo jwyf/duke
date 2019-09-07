@@ -1,2 +1,19 @@
 list
+todo
+deadline
+event
+done
+find
+delete
+todo testToDo
+deadline testDeadline /by testTime
+event testEvent /at testTimeRange
+list
+done 7
+delete 8
+list
+delete 8
+delete 7
+list
+find book
 bye

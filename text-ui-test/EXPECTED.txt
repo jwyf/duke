@@ -12,5 +12,100 @@
      6. [D][?] test print (by: 2/12/2019 1800)
     ____________________________________________________________
     ____________________________________________________________
+     Duke exception error: EMPTY_TODO
+     ☹ OOPS!!! The description of a todo cannot be empty.
+    ____________________________________________________________
+    ____________________________________________________________
+     Duke exception error: EMPTY_DEADLINE
+     ☹ OOPS!!! The description of a deadline cannot be empty.
+    ____________________________________________________________
+    ____________________________________________________________
+     Duke exception error: EMPTY_EVENT
+     ☹ OOPS!!! The description of an event cannot be empty.
+    ____________________________________________________________
+    ____________________________________________________________
+     Invalid task number entered! Please try again.
+    ____________________________________________________________
+    ____________________________________________________________
+     Duke exception error: EMPTY_FIND
+     ☹ OOPS!!! The find field cannot be empty.
+    ____________________________________________________________
+    ____________________________________________________________
+     Duke exception error: EMPTY_DELETE
+     ☹ OOPS!!! The delete field cannot be empty.
+    ____________________________________________________________
+    ____________________________________________________________
+     Got it. I've added this task: 
+       [T][?] testToDo
+     Now you have 7 tasks in the list.
+    ____________________________________________________________
+     This date cannot be converted.
+    ____________________________________________________________
+     Got it. I've added this task: 
+       [D][?] testDeadline (by: testTime)
+     Now you have 8 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Got it. I've added this task: 
+       [E][?] testEvent (at: testTimeRange)
+     Now you have 9 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Here are the tasks in your list:
+     1. [T][?] read book
+     2. [D][?] return book (by: June 6th)
+     3. [E][?] project meeting (at: Aug 6th 2-4pm)
+     4. [T][?] join sports club 
+     5. [T][?] add
+     6. [D][?] test print (by: 2/12/2019 1800)
+     7. [T][?] testToDo
+     8. [D][?] testDeadline (by: testTime)
+     9. [E][?] testEvent (at: testTimeRange)
+    ____________________________________________________________
+    ____________________________________________________________
+     Nice! I've marked this task as done: 
+       [?] testToDo
+    ____________________________________________________________
+    ____________________________________________________________
+     Noted. I've removed this task: 
+       [D][?] testDeadline (by: testTime)
+     Now you have 8 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Here are the tasks in your list:
+     1. [T][?] read book
+     2. [D][?] return book (by: June 6th)
+     3. [E][?] project meeting (at: Aug 6th 2-4pm)
+     4. [T][?] join sports club 
+     5. [T][?] add
+     6. [D][?] test print (by: 2/12/2019 1800)
+     7. [T][?] testToDo
+     8. [E][?] testEvent (at: testTimeRange)
+    ____________________________________________________________
+    ____________________________________________________________
+     Noted. I've removed this task: 
+       [E][?] testEvent (at: testTimeRange)
+     Now you have 7 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Noted. I've removed this task: 
+       [T][?] testToDo
+     Now you have 6 tasks in the list.
+    ____________________________________________________________
+    ____________________________________________________________
+     Here are the tasks in your list:
+     1. [T][?] read book
+     2. [D][?] return book (by: June 6th)
+     3. [E][?] project meeting (at: Aug 6th 2-4pm)
+     4. [T][?] join sports club 
+     5. [T][?] add
+     6. [D][?] test print (by: 2/12/2019 1800)
+    ____________________________________________________________
+    ____________________________________________________________
+     Here are the matching tasks in your list:
+     1. [T][?] read book
+     2. [D][?] return book (by: June 6th)
+    ____________________________________________________________
+    ____________________________________________________________
      Bye. Hope to see you again soon!
     ____________________________________________________________

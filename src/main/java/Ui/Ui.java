@@ -1,4 +1,7 @@
+package Ui;
+
 import Task.*;
+import Exception.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -6,20 +9,11 @@ import java.util.Scanner;
 public class Ui {
     private static String TAB = "    ";
     private static String LINE = TAB + "____________________________________________________________";
-    private static Scanner scanner = new Scanner(System.in);
+    private Scanner scanner;
 
     public Ui() {
-        //empty constructor
+        this.scanner = new Scanner(System.in);
     }
-
-//    public String readCommand() {
-//        String commands = scanner.nextLine();
-//        return commands;
-//    }
-
-//    public void showLoadingError() {
-//        System.out.println("Duke exception error"); //Error for Duke
-//    }
 
     public void showFileNotFoundError() {
         printWithLine(TAB + " File not found exception, an empty list is loaded");
@@ -36,8 +30,8 @@ public class Ui {
     }
 
     public void showDukeError(DukeException e) {
-        String dukeErrorMsg = TAB + " Duke exception error: " + e.getErrorType();
-        switch (e.getErrorType()) {
+        String dukeErrorMsg = TAB + " Duke exception error: " + e.getExceptionType();
+        switch (e.getExceptionType()) {
         case EMPTY_TODO: {
             printWithLine(dukeErrorMsg, TAB + " ☹ OOPS!!! The description of a todo cannot be empty.");
             break;
@@ -105,7 +99,7 @@ public class Ui {
         else {
             System.out.println(TAB + " Here are the tasks in your list:");
             for (int i = 0; i < taskList.size(); i++) {
-                Task currentTask = (Task) taskList.get(i);
+                Task currentTask = taskList.get(i);
                 System.out.println(TAB + " " + (i + 1) + ". " + currentTask.toString());
             }
         }
@@ -134,6 +128,10 @@ public class Ui {
             System.out.println(TAB + " " + (i + 1) + ". " + currentTask.toString());
         }
         printLine();
+    }
+
+    public String readCommand() {
+        return scanner.nextLine();
     }
 
 }
