@@ -1,4 +1,7 @@
+package Storage;
+
 import Task.*;
+import Exception.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -53,7 +56,7 @@ public class Storage {
                 taskList.add(event);
             }
             else {
-                throw new DukeException(ErrorType.SAVE_CORRUPTED);
+                throw new DukeException(ExceptionType.SAVE_CORRUPTED);
             }
         }
         return taskList;

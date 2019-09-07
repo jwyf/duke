@@ -1,4 +1,7 @@
+package Ui;
+
 import Task.*;
+import Exception.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -36,8 +39,8 @@ public class Ui {
     }
 
     public void showDukeError(DukeException e) {
-        String dukeErrorMsg = TAB + " Duke exception error: " + e.getErrorType();
-        switch (e.getErrorType()) {
+        String dukeErrorMsg = TAB + " Duke exception error: " + e.getExceptionType();
+        switch (e.getExceptionType()) {
         case EMPTY_TODO: {
             printWithLine(dukeErrorMsg, TAB + " ☹ OOPS!!! The description of a todo cannot be empty.");
             break;

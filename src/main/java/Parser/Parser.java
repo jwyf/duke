@@ -1,4 +1,9 @@
+package Parser;
+
+import Storage.Storage;
 import Task.*;
+import Ui.Ui;
+import Exception.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +15,7 @@ public class Parser {
     protected Storage storage;
     protected Scanner scanner;
 
-//    public static /*Command*/ String parse(String fullCommand) {
+//    public static /*Command.Command*/ String parse(String fullCommand) {
 //        return fullCommand;
 //    }
 
@@ -26,7 +31,7 @@ public class Parser {
             input = readInput(scanner);
 
             if (input.isBlank()) {
-                throw new DukeException(ErrorType.EMPTY_FIELD);
+                throw new DukeException(ExceptionType.EMPTY_FIELD);
             }
             else if (input.equals("bye")) {
                 break;
@@ -75,7 +80,7 @@ public class Parser {
         switch (taskType) {
         case "todo": {
             if (input.substring(4).isBlank()) {
-                throw new DukeException(ErrorType.EMPTY_TODO);
+                throw new DukeException(ExceptionType.EMPTY_TODO);
             } else {
                 ToDo todo = new ToDo(input.substring(5));
                 taskList.add(todo);
@@ -86,11 +91,11 @@ public class Parser {
         } case "deadline": {
             Deadline deadline;
             if (input.substring(8).isBlank()) {
-                throw new DukeException(ErrorType.EMPTY_DEADLINE);
+                throw new DukeException(ExceptionType.EMPTY_DEADLINE);
             }
             String[] deadlineArray = input.substring(9).split(" /by ");
             if (deadlineArray[1].isBlank()) {
-                throw new DukeException(ErrorType.EMPTY_DEADLINE);
+                throw new DukeException(ExceptionType.EMPTY_DEADLINE);
             }
             deadline = new Deadline(deadlineArray[0], deadlineArray[1]);
             taskList.add(deadline);
@@ -100,11 +105,11 @@ public class Parser {
         } case "event": {
             Event event;
             if (input.substring(5).isBlank()) {
-                throw new DukeException(ErrorType.EMPTY_EVENT);
+                throw new DukeException(ExceptionType.EMPTY_EVENT);
             }
             String[] eventArray = input.substring(6).split(" /at ");
             if (eventArray[1].isBlank()) {
-                throw new DukeException(ErrorType.EMPTY_EVENT);
+                throw new DukeException(ExceptionType.EMPTY_EVENT);
             }
             event = new Event(eventArray[0], eventArray[1]);
             taskList.add(event);
@@ -112,7 +117,7 @@ public class Parser {
             break;
         }
         default: {
-            throw new DukeException(ErrorType.UNKNOWN_COMMAND);
+            throw new DukeException(ExceptionType.UNKNOWN_COMMAND);
         }
         }
         storage.save(taskList);
@@ -129,7 +134,7 @@ public class Parser {
 
     private void deleteTask (String input, TaskList taskList) throws IOException, DukeException {
         if (input.substring(6).isBlank()) {
-            throw new DukeException(ErrorType.EMPTY_DELETE);
+            throw new DukeException(ExceptionType.EMPTY_DELETE);
         }
         Integer taskNum = Integer.parseInt(input.substring(7));
         Task currentTask = (Task) taskList.get(taskNum - 1);
@@ -153,7 +158,7 @@ public class Parser {
 
     private void findTask(String input, TaskList taskList) throws DukeException {
         if (input.substring(4).isBlank()) {
-            throw new DukeException(ErrorType.EMPTY_FIND);
+            throw new DukeException(ExceptionType.EMPTY_FIND);
         }
         String keyWord = input.substring(5);
         ArrayList<Task> findList = new ArrayList<>();
