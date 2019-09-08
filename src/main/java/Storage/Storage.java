@@ -68,11 +68,21 @@ public class Storage {
         for (int i = 0; i < taskList.size(); i++) {
             Task currentTask = taskList.get(i);
             String taskType = currentTask.getTaskType();
-            if (taskType.equals("D") || taskType.equals("E")) {
-                formattedList = formattedList + currentTask.getTaskType() + " | "
-                        + (currentTask.getDoneStatus() ? 1 : 0) + " | "
-                        + currentTask.getCommand() + " | "
-                        + currentTask.getDate()
+
+            if (taskType.equals("D")) {
+                Deadline deadline = (Deadline) currentTask;
+                formattedList = formattedList + deadline.getTaskType() + " | "
+                        + (deadline.getDoneStatus() ? 1 : 0) + " | "
+                        + deadline.getCommand() + " | "
+                        + deadline.getDate()
+                        + System.lineSeparator();
+            }
+            else if (taskType.equals("E")) {
+                Event event = (Event) currentTask;
+                formattedList = formattedList + event.getTaskType() + " | "
+                        + (event.getDoneStatus() ? 1 : 0) + " | "
+                        + event.getCommand() + " | "
+                        + event.getDate()
                         + System.lineSeparator();
             }
             else {

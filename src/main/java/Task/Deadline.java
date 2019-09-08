@@ -4,14 +4,13 @@ import java.util.Date;
 
 public class Deadline extends Task {
     private String by;
-    protected Date date;
+    private Date date;
 
     public Deadline(String description, String by) {
         super(description);
         this.by = by;
 
         super.taskType = "D";
-        super.date = by;
         checkDate();
     }
 
@@ -29,6 +28,9 @@ public class Deadline extends Task {
                 Integer minutes = Integer.parseInt(time.substring(3, 4));
                 this.date = new Date(year, month, day, hours, minutes);
             }
+            else {
+                this.date = null;
+            }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("     This date cannot be converted.");
         }
@@ -36,6 +38,16 @@ public class Deadline extends Task {
 
     public void printDate() {
         System.out.println("Current date is " + this.date); ;
+    }
+
+    public String getDate() {
+        return by;
+//        if (date == null) {
+//            return dateString;
+//        }
+//        else {
+//            return date.toString();
+//        }
     }
 
     @Override

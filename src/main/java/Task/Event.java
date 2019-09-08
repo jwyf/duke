@@ -1,14 +1,20 @@
 package Task;
 
+import java.util.Date;
+
 public class Event extends Task {
     private String on;
+    private Date date;
 
     public Event(String description, String on) {
         super(description);
         this.on = on;
 
         super.taskType = "E";
-        super.date = on;
+    }
+
+    public String getDate() {
+        return on;
     }
 
     @Override

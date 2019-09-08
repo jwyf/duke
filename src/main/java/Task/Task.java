@@ -1,10 +1,10 @@
 package Task;
 
-public class Task {
+public abstract class Task {
     protected String command;
     protected boolean isDone;
     protected String taskType;
-    protected String date;
+//    protected String date;
 
     public Task(String command) {
         this.command = command;
@@ -31,10 +31,6 @@ public class Task {
 
     public String getTaskType() {
         return taskType;
-    }
-
-    public String getDate() {
-        return date;
     }
 
     @Override
