@@ -22,7 +22,7 @@ public class DeadlineCommand extends Command {
             throw new DukeException(ExceptionType.EMPTY_DEADLINE);
         }
         String[] deadlineArray = input.substring(9).split(" /by ");
-        if (deadlineArray[1].isBlank()) {
+        if (deadlineArray[0].isBlank() || deadlineArray[1].isBlank()) {
             throw new DukeException(ExceptionType.EMPTY_DEADLINE);
         }
         deadline = new Deadline(deadlineArray[0], deadlineArray[1]);

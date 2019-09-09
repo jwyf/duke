@@ -22,7 +22,7 @@ public class EventCommand extends Command {
             throw new DukeException(ExceptionType.EMPTY_EVENT);
         }
         String[] eventArray = input.substring(6).split(" /at ");
-        if (eventArray[1].isBlank()) {
+        if (eventArray[0].isBlank() || eventArray[1].isBlank()) {
             throw new DukeException(ExceptionType.EMPTY_EVENT);
         }
         event = new Event(eventArray[0], eventArray[1]);

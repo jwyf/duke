@@ -26,7 +26,9 @@ public class Parser {
 //        else if (input.startsWith("print date")) {
 //            Task.Deadline deadline = (Task.Deadline) taskList.get(5);
 //            deadline.printDate();
+//            return null;
 //        }
+
     }
 
     private static Command addTask(String input) throws DukeException {

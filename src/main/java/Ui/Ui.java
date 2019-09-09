@@ -23,10 +23,10 @@ public class Ui {
                 + " when writing to file");
     }
     public void showNumberFormatException() {
-        printWithLine(TAB + " Invalid format entered! Please try again.");
+        printWithLine(TAB + " Number format exception! Invalid format entered!");
     }
     public void showIndexOutOfBoundsException() {
-        printWithLine(TAB + " Invalid task number entered! Please try again.");
+        printWithLine(TAB + " Index out of Bounds exception! An invalid number or input was entered!");
     }
 
     public void showDukeError(DukeException e) {

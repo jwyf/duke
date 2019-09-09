@@ -4,7 +4,6 @@ public abstract class Task {
     protected String command;
     protected boolean isDone;
     protected String taskType;
-//    protected String date;
 
     public Task(String command) {
         this.command = command;

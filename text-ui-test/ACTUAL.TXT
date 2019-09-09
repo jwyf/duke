@@ -24,7 +24,7 @@
      ☹ OOPS!!! The description of an event cannot be empty.
     ____________________________________________________________
     ____________________________________________________________
-     Invalid task number entered! Please try again.
+     Index out of Bounds exception! An invalid number or input was entered!
     ____________________________________________________________
     ____________________________________________________________
      Duke exception error: EMPTY_FIND
