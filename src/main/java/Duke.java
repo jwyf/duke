@@ -10,13 +10,15 @@ import java.io.IOException;
 
 
 public class Duke {
-    /**
-     * A Personal Assistant Chatbot that helps a person to keep track of various things.
-     */
     private static Storage storage;
     private static Ui ui;
     private TaskList taskList;
 
+    /**
+     * A Personal Assistant Chatbot, Duke, that helps a person to keep track of various things.
+     * Constructor for Duke
+     * @param filePath The string representing the path to the file of which Duke loads data from.
+     */
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -32,6 +34,9 @@ public class Duke {
         }
     }
 
+    /**
+     * This method runs Duke
+     */
     public void run() {
         ui.printHelloMsg();
 
@@ -54,6 +59,10 @@ public class Duke {
         }
     }
 
+    /**
+     * Main function
+     * @param args
+     */
     public static void main(String[] args) {
         String filePath = "C:/Users/josep/duke/data/duke.txt";
         new Duke(filePath).run();

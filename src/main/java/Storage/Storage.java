@@ -12,11 +12,21 @@ public class Storage {
     private String filePath;
     private TaskList taskList;
 
+    /**
+     * Constructor of Storage
+     * @param filePath
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
         taskList = new TaskList();
     }
 
+    /**
+     * This method loads the text save file of Duke and returns the data of it
+     * @return The TaskList from previous saves of Duke
+     * @throws FileNotFoundException This exception is thrown when the save file is not found
+     * @throws DukeException This Duke-specific exception is thrown when the user input is invalid
+     */
     public TaskList load() throws FileNotFoundException, DukeException {
         File file = new File(filePath);
         Scanner scanner = new Scanner(file);
@@ -62,6 +72,11 @@ public class Storage {
         return taskList;
     }
 
+    /**
+     * This method writes to the text save file of Duke
+     * @param modifiedList The TaskList to be saved, written into the text file
+     * @throws IOException The exception thrown when the file is not found
+     */
     public void save(TaskList modifiedList) throws IOException {
         taskList = modifiedList;
         String formattedList = "";

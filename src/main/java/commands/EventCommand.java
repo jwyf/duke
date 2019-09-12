@@ -15,6 +15,14 @@ public class EventCommand extends Command {
         super(input);
     }
 
+    /**
+     * This method executes the EventCommand
+     * @param taskList The list of tasks of Duke
+     * @param ui The Ui, handler of Duke's responses
+     * @param storage The Storage, handler of how Duke reads from and writes to its save file
+     * @throws DukeException The Duke-specific exception thrown when the user input is invalid
+     * @throws IOException The exception thrown when the input is invalid
+     */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException, IOException {
         Event event;

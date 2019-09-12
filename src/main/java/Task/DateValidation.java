@@ -5,6 +5,11 @@ import java.util.Date;
 import java.text.ParseException;
 
 public class DateValidation{
+    /**
+     * This method validates the format of the date string
+     * @param date The string representing the date
+     * @return A boolean, true of the date string is of a valid format, false otherwise
+     */
     public static boolean validateJavaDate(String date)
     {
         /*

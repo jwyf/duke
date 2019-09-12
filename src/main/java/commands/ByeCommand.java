@@ -10,6 +10,12 @@ public class ByeCommand extends Command {
         super(input);
     }
 
+    /**
+     * This method executes the ByeCommand
+     * @param taskList The list of tasks of Duke
+     * @param ui The Ui, handler of Duke's responses
+     * @param storage The Storage, handler of how Duke reads from and writes to its save file
+     */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) {
         ui.printByeMsg();
