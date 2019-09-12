@@ -1,7 +1,7 @@
-package Command;
+package commands;
 
-import Exception.DukeException;
-import Exception.ExceptionType;
+import exceptions.DukeException;
+import exceptions.ExceptionType;
 import Storage.Storage;
 import Task.Task;
 import Task.TaskList;

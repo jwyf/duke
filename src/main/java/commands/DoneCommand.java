@@ -1,4 +1,4 @@
-package Command;
+package commands;
 
 import Storage.Storage;
 import Task.Task;

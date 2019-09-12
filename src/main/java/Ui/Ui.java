@@ -1,7 +1,7 @@
 package Ui;
 
 import Task.*;
-import Exception.*;
+import exceptions.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,21 +16,21 @@ public class Ui {
     }
 
     public void showFileNotFoundError() {
-        printWithLine(TAB + " File not found exception, an empty list is loaded");
+        printWithLine(TAB + " File not found exceptions, an empty list is loaded");
     }
     public void showIOExceptionError(Exception e) {
         printWithLine(TAB + " There is an IOException error: " + e.getMessage()
                 + " when writing to file");
     }
     public void showNumberFormatException() {
-        printWithLine(TAB + " Number format exception! Invalid format entered!");
+        printWithLine(TAB + " Number format exceptions! Invalid format entered!");
     }
     public void showIndexOutOfBoundsException() {
-        printWithLine(TAB + " Index out of Bounds exception! An invalid input or date was processed!");
+        printWithLine(TAB + " Index out of Bounds exceptions! An invalid input or date was processed!");
     }
 
     public void showDukeError(DukeException e) {
-        String dukeErrorMsg = TAB + " Duke exception error: " + e.getExceptionType();
+        String dukeErrorMsg = TAB + " Duke exceptions error: " + e.getExceptionType();
         switch (e.getExceptionType()) {
         case EMPTY_TODO: {
             printWithLine(dukeErrorMsg, TAB + " ☹ OOPS!!! The description of a todo cannot be empty.");

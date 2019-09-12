@@ -1,7 +1,7 @@
 package Parser;
 
-import Command.*;
-import Exception.*;
+import commands.*;
+import exceptions.*;
 
 public class Parser {
 

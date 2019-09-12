@@ -12,26 +12,26 @@
      6. [D][?] test print (by: 2/12/2019 1800)
     ____________________________________________________________
     ____________________________________________________________
-     Duke exception error: EMPTY_TODO
+     Duke exceptions error: EMPTY_TODO
      ☹ OOPS!!! The description of a todo cannot be empty.
     ____________________________________________________________
     ____________________________________________________________
-     Duke exception error: EMPTY_DEADLINE
+     Duke exceptions error: EMPTY_DEADLINE
      ☹ OOPS!!! The description of a deadline cannot be empty.
     ____________________________________________________________
     ____________________________________________________________
-     Duke exception error: EMPTY_EVENT
+     Duke exceptions error: EMPTY_EVENT
      ☹ OOPS!!! The description of an event cannot be empty.
     ____________________________________________________________
     ____________________________________________________________
-     Index out of Bounds exception! An invalid input or date was processed!
+     Index out of Bounds exceptions! An invalid input or date was processed!
     ____________________________________________________________
     ____________________________________________________________
-     Duke exception error: EMPTY_FIND
+     Duke exceptions error: EMPTY_FIND
      ☹ OOPS!!! The find field cannot be empty.
     ____________________________________________________________
     ____________________________________________________________
-     Duke exception error: EMPTY_DELETE
+     Duke exceptions error: EMPTY_DELETE
      ☹ OOPS!!! The delete field cannot be empty.
     ____________________________________________________________
     ____________________________________________________________
@@ -40,7 +40,7 @@
      Now you have 7 tasks in the list.
     ____________________________________________________________
     ____________________________________________________________
-     Index out of Bounds exception! An invalid input or date was processed!
+     Index out of Bounds exceptions! An invalid input or date was processed!
     ____________________________________________________________
     ____________________________________________________________
      Got it. I've added this task: 

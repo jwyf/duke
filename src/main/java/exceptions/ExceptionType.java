@@ -1,4 +1,4 @@
-package Exception;
+package exceptions;
 
 public enum ExceptionType {
     EMPTY_TODO, EMPTY_DEADLINE, EMPTY_EVENT, UNKNOWN_COMMAND, UNKNOWN_ERROR, SAVE_CORRUPTED, EMPTY_FIND, EMPTY_DELETE, EMPTY_FIELD

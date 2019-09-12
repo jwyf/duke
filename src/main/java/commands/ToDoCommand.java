@@ -1,10 +1,10 @@
-package Command;
+package commands;
 
 import Storage.Storage;
 import Task.TaskList;
 import Task.ToDo;
 import Ui.Ui;
-import Exception.*;
+import exceptions.*;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package Exception;
+package exceptions;
 
 public class DukeException extends Exception {
     /**

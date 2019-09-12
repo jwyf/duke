@@ -1,9 +1,9 @@
-import Command.Command;
 import Parser.Parser;
 import Storage.Storage;
 import Task.TaskList;
 import Ui.Ui;
-import Exception.*;
+import commands.Command;
+import exceptions.DukeException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,7 +13,6 @@ public class Duke {
     /**
      * A Personal Assistant Chatbot that helps a person to keep track of various things.
      */
-
     private static Storage storage;
     private static Ui ui;
     private TaskList taskList;
@@ -28,7 +27,7 @@ public class Duke {
             ui.showFileNotFoundError();
             taskList = new TaskList();
         } catch (DukeException e) {
-            ui.showDukeError(e); //save corrupted exception
+            ui.showDukeError(e); //save corrupted exceptions
             taskList = new TaskList();
         }
     }

@@ -1,8 +1,8 @@
-package Command;
+package commands;
 
 import Storage.Storage;
 import Task.TaskList;
-import Exception.DukeException;
+import exceptions.DukeException;
 import Ui.Ui;
 
 import java.io.IOException;
