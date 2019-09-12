@@ -26,7 +26,7 @@ public class Ui {
         printWithLine(TAB + " Number format exception! Invalid format entered!");
     }
     public void showIndexOutOfBoundsException() {
-        printWithLine(TAB + " Index out of Bounds exception! An invalid number or input was entered!");
+        printWithLine(TAB + " Index out of Bounds exception! An invalid input or date was processed!");
     }
 
     public void showDukeError(DukeException e) {

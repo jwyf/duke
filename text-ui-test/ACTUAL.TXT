@@ -7,7 +7,7 @@
      1. [T][?] read book
      2. [D][?] return book (by: June 6th)
      3. [E][?] project meeting (at: Aug 6th 2-4pm)
-     4. [T][?] join sports club 
+     4. [T][?] join sports club
      5. [T][?] add
      6. [D][?] test print (by: 2/12/2019 1800)
     ____________________________________________________________
@@ -24,7 +24,7 @@
      ☹ OOPS!!! The description of an event cannot be empty.
     ____________________________________________________________
     ____________________________________________________________
-     Index out of Bounds exception! An invalid number or input was entered!
+     Index out of Bounds exception! An invalid input or date was processed!
     ____________________________________________________________
     ____________________________________________________________
      Duke exception error: EMPTY_FIND
@@ -39,7 +39,9 @@
        [T][?] testToDo
      Now you have 7 tasks in the list.
     ____________________________________________________________
-     This date cannot be converted.
+    ____________________________________________________________
+     Index out of Bounds exception! An invalid input or date was processed!
+    ____________________________________________________________
     ____________________________________________________________
      Got it. I've added this task: 
        [D][?] testDeadline (by: testTime)
@@ -55,7 +57,7 @@
      1. [T][?] read book
      2. [D][?] return book (by: June 6th)
      3. [E][?] project meeting (at: Aug 6th 2-4pm)
-     4. [T][?] join sports club 
+     4. [T][?] join sports club
      5. [T][?] add
      6. [D][?] test print (by: 2/12/2019 1800)
      7. [T][?] testToDo
@@ -76,7 +78,7 @@
      1. [T][?] read book
      2. [D][?] return book (by: June 6th)
      3. [E][?] project meeting (at: Aug 6th 2-4pm)
-     4. [T][?] join sports club 
+     4. [T][?] join sports club
      5. [T][?] add
      6. [D][?] test print (by: 2/12/2019 1800)
      7. [T][?] testToDo
@@ -97,7 +99,7 @@
      1. [T][?] read book
      2. [D][?] return book (by: June 6th)
      3. [E][?] project meeting (at: Aug 6th 2-4pm)
-     4. [T][?] join sports club 
+     4. [T][?] join sports club
      5. [T][?] add
      6. [D][?] test print (by: 2/12/2019 1800)
     ____________________________________________________________

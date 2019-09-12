@@ -1,5 +1,7 @@
 package Task;
 
+import Ui.Ui;
+
 import java.time.LocalDateTime;
 
 public class Deadline extends Task {
@@ -15,7 +17,7 @@ public class Deadline extends Task {
         checkDate();
     }
 
-    public void checkDate() {
+    private void checkDate() {
         try {
             String[] byArray = by.split(" ");
             String date = byArray[0];
@@ -33,7 +35,8 @@ public class Deadline extends Task {
                 this.date = null;
             }
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("     This date cannot be converted.");
+            Ui ui = new Ui();
+            ui.showIndexOutOfBoundsException();
         }
     }
 
@@ -41,14 +44,12 @@ public class Deadline extends Task {
         System.out.println("Current date is " + this.date); ;
     }
 
-    public String getDate() {
+    public String getDateString() {
         return by;
-//        if (date == null) {
-//            return by;
-//        }
-//        else {
-//            return this.date;
-//        }
+    }
+
+    public LocalDateTime getDate() {
+        return date;
     }
 
     @Override

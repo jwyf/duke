@@ -74,7 +74,7 @@ public class Storage {
                 formattedList = formattedList + deadline.getTaskType() + " | "
                         + (deadline.getDoneStatus() ? 1 : 0) + " | "
                         + deadline.getCommand() + " | "
-                        + deadline.getDate()
+                        + deadline.getDateString()
                         + System.lineSeparator();
             }
             else if (taskType.equals("E")) {
