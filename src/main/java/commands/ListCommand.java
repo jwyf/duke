@@ -1,8 +1,8 @@
 package commands;
 
-import Storage.Storage;
-import Task.TaskList;
-import Ui.Ui;
+import storage.Storage;
+import task.TaskList;
+import ui.Ui;
 
 public class ListCommand extends Command {
 
@@ -11,10 +11,10 @@ public class ListCommand extends Command {
     }
 
     /**
-     * This method executes the ListCommand
-     * @param taskList The list of tasks of Duke
-     * @param ui The Ui, handler of Duke's responses
-     * @param storage The Storage, handler of how Duke reads from and writes to its save file
+     * This method executes the ListCommand.
+     * @param taskList The list of tasks of Duke.
+     * @param ui The ui, handler of Duke's responses.
+     * @param storage The Storage, handler of how Duke reads from and writes to its save file.
      */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) {

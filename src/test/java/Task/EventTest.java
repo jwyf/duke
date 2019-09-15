@@ -1,6 +1,7 @@
 package Task;
 
 import org.junit.jupiter.api.Test;
+import task.Event;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,19 +15,19 @@ public class EventTest {
     }
     @Test
     public void testGetStatusIcon() {
-        assertEquals(testEvent.getStatusIcon(), "\u2718");
-        assertEquals(testEvent1.getStatusIcon(), "\u2718");
+        assertEquals(testEvent.getStatusIcon(), "✘");
+        assertEquals(testEvent1.getStatusIcon(), "✘");
     }
     @Test
     public void testSetDoneStatus() {
         testEvent.setDoneStatus(true);
         testEvent1.setDoneStatus(true);
-        assertEquals(testEvent.getStatusIcon(), "\u2713");
-        assertEquals(testEvent1.getStatusIcon(), "\u2713");
+        assertEquals(testEvent.getStatusIcon(), "✓");
+        assertEquals(testEvent1.getStatusIcon(), "✓");
         testEvent.setDoneStatus(false);
         testEvent1.setDoneStatus(false);
-        assertEquals(testEvent.getStatusIcon(), "\u2718");
-        assertEquals(testEvent1.getStatusIcon(), "\u2718");
+        assertEquals(testEvent.getStatusIcon(), "✘");
+        assertEquals(testEvent1.getStatusIcon(), "✘");
     }
 
     @Test
@@ -55,8 +56,8 @@ public class EventTest {
 
     @Test
     public void testToString() {
-        assertEquals(testEvent.toString(), "[E][\u2718] JUnit Test (at: Test dateString)");
-        assertEquals(testEvent1.toString(), "[E][\u2718] Random (at: 07/10/2019 2100)");
+        assertEquals(testEvent.toString(), "[E][✘] JUnit Test (at: Test dateString)");
+        assertEquals(testEvent1.toString(), "[E][✘] Random (at: 07/10/2019 2100)");
     }
 
 }

@@ -1,9 +1,13 @@
 package Storage;
 
 import exceptions.*;
-import Task.*;
-import Ui.Ui;
+import ui.Ui;
 import org.junit.jupiter.api.Test;
+import storage.Storage;
+import task.Deadline;
+import task.Event;
+import task.TaskList;
+import task.ToDo;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

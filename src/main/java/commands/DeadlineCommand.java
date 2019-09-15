@@ -2,10 +2,10 @@ package commands;
 
 import exceptions.DukeException;
 import exceptions.ExceptionType;
-import Storage.Storage;
-import Task.Deadline;
-import Task.TaskList;
-import Ui.Ui;
+import storage.Storage;
+import task.Deadline;
+import task.TaskList;
+import ui.Ui;
 
 import java.io.IOException;
 
@@ -16,12 +16,12 @@ public class DeadlineCommand extends Command {
     }
 
     /**
-     * This method executes the DeadlineCommand
-     * @param taskList The list of tasks of Duke
-     * @param ui The Ui, handler of Duke's responses
-     * @param storage The Storage, handler of how Duke reads from and writes to its save file
-     * @throws DukeException The Duke-specific exception thrown when the user input is invalid
-     * @throws IOException The exception thrown when the input is invalid
+     * This method executes the DeadlineCommand.
+     * @param taskList The list of tasks of Duke.
+     * @param ui The ui, handler of Duke's responses.
+     * @param storage The Storage, handler of how Duke reads from and writes to its save file.
+     * @throws DukeException The Duke-specific exception thrown when the user input is invalid.
+     * @throws IOException The exception thrown when the input is invalid.
      */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException, IOException {

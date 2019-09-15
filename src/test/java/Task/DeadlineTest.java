@@ -1,6 +1,7 @@
 package Task;
 
 import org.junit.jupiter.api.Test;
+import task.Deadline;
 
 import java.time.LocalDateTime;
 
@@ -16,19 +17,19 @@ public class DeadlineTest {
     }
     @Test
     public void testGetStatusIcon() {
-        assertEquals(testDeadline.getStatusIcon(), "\u2718");
-        assertEquals(testDeadline1.getStatusIcon(), "\u2718");
+        assertEquals(testDeadline.getStatusIcon(), "✘");
+        assertEquals(testDeadline1.getStatusIcon(), "✘");
     }
     @Test
     public void testSetDoneStatus() {
         testDeadline.setDoneStatus(true);
         testDeadline1.setDoneStatus(true);
-        assertEquals(testDeadline.getStatusIcon(), "\u2713");
-        assertEquals(testDeadline1.getStatusIcon(), "\u2713");
+        assertEquals(testDeadline.getStatusIcon(), "✓");
+        assertEquals(testDeadline1.getStatusIcon(), "✓");
         testDeadline.setDoneStatus(false);
         testDeadline1.setDoneStatus(false);
-        assertEquals(testDeadline.getStatusIcon(), "\u2718");
-        assertEquals(testDeadline1.getStatusIcon(), "\u2718");
+        assertEquals(testDeadline.getStatusIcon(), "✘");
+        assertEquals(testDeadline1.getStatusIcon(), "✘");
     }
 
     @Test
@@ -63,8 +64,8 @@ public class DeadlineTest {
 
     @Test
     public void testToString() {
-        assertEquals(testDeadline.toString(), "[D][\u2718] JUnit Test (by: Test dateString)");
-        assertEquals(testDeadline1.toString(), "[D][\u2718] Random (by: 07/10/2019 2100)");
+        assertEquals(testDeadline.toString(), "[D][✘] JUnit Test (by: Test dateString)");
+        assertEquals(testDeadline1.toString(), "[D][✘] Random (by: 07/10/2019 2100)");
     }
 
 }

@@ -1,6 +1,6 @@
-package Task;
+package task;
 
-import Ui.Ui;
+import ui.Ui;
 
 import java.time.LocalDateTime;
 
@@ -9,9 +9,9 @@ public class Deadline extends Task {
     private LocalDateTime date;
 
     /**
-     * Constructor for Deadline
-     * @param description The description string of the Deadline task
-     * @param by The time string by which the Deadline task is due
+     * Constructor for Deadline.
+     * @param description The description string of the Deadline task.
+     * @param by The time string by which the Deadline task is due.
      */
     public Deadline(String description, String by) {
         super(description);
@@ -23,7 +23,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * This method checks if the time string of the Deadline is valid to be converted to LocalDateTime
+     * This method checks if the time string of the Deadline is valid to be converted to LocalDateTime.
      */
     private void checkDate() {
         try {
@@ -49,24 +49,24 @@ public class Deadline extends Task {
     }
 
     /**
-     * This getter returns the date string of the Deadline
-     * @return The string which represents the date the deadline is due
+     * This getter returns the date string of the Deadline.
+     * @return The string which represents the date the deadline is due.
      */
     public String getDateString() {
         return by;
     }
 
     /**
-     * This getter returns the LocalDateTime of the Deadline
-     * @return The LocalDateTime object which represents the date the deadline is due
+     * This getter returns the LocalDateTime of the Deadline.
+     * @return The LocalDateTime object which represents the date the deadline is due.
      */
     public LocalDateTime getDate() {
         return date;
     }
 
     /**
-     * This method returns all the attributes of the Deadline task in a string
-     * @return The string which comprises of all the Deadline's attributes
+     * This method returns all the attributes of the Deadline task in a string.
+     * @return The string which comprises of all the Deadline's attributes.
      */
     @Override
     public String toString() {

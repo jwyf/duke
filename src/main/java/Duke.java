@@ -1,7 +1,7 @@
-import Parser.Parser;
-import Storage.Storage;
-import Task.TaskList;
-import Ui.Ui;
+import parser.Parser;
+import storage.Storage;
+import task.TaskList;
+import ui.Ui;
 import commands.Command;
 import exceptions.DukeException;
 
@@ -16,7 +16,7 @@ public class Duke {
 
     /**
      * A Personal Assistant Chatbot, Duke, that helps a person to keep track of various things.
-     * Constructor for Duke
+     * Constructor for Duke.
      * @param filePath The string representing the path to the file of which Duke loads data from.
      */
     public Duke(String filePath) {
@@ -35,7 +35,7 @@ public class Duke {
     }
 
     /**
-     * This method runs Duke
+     * This method runs Duke.
      */
     public void run() {
         ui.printHelloMsg();
@@ -60,8 +60,8 @@ public class Duke {
     }
 
     /**
-     * Main function
-     * @param args
+     * Main function.
+     * @param args Command-line arguments as an array of String objects.
      */
     public static void main(String[] args) {
         String filePath = "C:/Users/josep/duke/data/duke.txt";

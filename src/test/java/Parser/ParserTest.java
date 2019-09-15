@@ -2,8 +2,9 @@ package Parser;
 
 import commands.*;
 import exceptions.*;
-import Ui.Ui;
+import ui.Ui;
 import org.junit.jupiter.api.Test;
+import parser.Parser;
 
 import static org.junit.jupiter.api.Assertions.*;
 

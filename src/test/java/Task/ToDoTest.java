@@ -1,6 +1,7 @@
 package Task;
 
 import org.junit.jupiter.api.Test;
+import task.ToDo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,19 +15,19 @@ public class ToDoTest {
     }
     @Test
     public void testGetStatusIcon() {
-        assertEquals(testToDo.getStatusIcon(), "\u2718");
-        assertEquals(testToDo1.getStatusIcon(), "\u2718");
+        assertEquals(testToDo.getStatusIcon(), "✘");
+        assertEquals(testToDo1.getStatusIcon(), "✘");
     }
     @Test
     public void testSetDoneStatus() {
         testToDo.setDoneStatus(true);
         testToDo1.setDoneStatus(true);
-        assertEquals(testToDo.getStatusIcon(), "\u2713");
-        assertEquals(testToDo1.getStatusIcon(), "\u2713");
+        assertEquals(testToDo.getStatusIcon(), "✓");
+        assertEquals(testToDo1.getStatusIcon(), "✓");
         testToDo.setDoneStatus(false);
         testToDo1.setDoneStatus(false);
-        assertEquals(testToDo.getStatusIcon(), "\u2718");
-        assertEquals(testToDo1.getStatusIcon(), "\u2718");
+        assertEquals(testToDo.getStatusIcon(), "✘");
+        assertEquals(testToDo1.getStatusIcon(), "✘");
     }
 
     @Test
@@ -49,8 +50,8 @@ public class ToDoTest {
 
     @Test
     public void testToString() {
-        assertEquals(testToDo.toString(), "[T][\u2718] JUnit Test");
-        assertEquals(testToDo1.toString(), "[T][\u2718] Random");
+        assertEquals(testToDo.toString(), "[T][✘] JUnit Test");
+        assertEquals(testToDo1.toString(), "[T][✘] Random");
     }
 
 }
